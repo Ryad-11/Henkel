@@ -1,5 +1,5 @@
 // ── Config ────────────────────────────────────────────────────────────────────
-const API_BASE = "https://henkel.onrender.com/";
+const API_BASE = "";
 
 const COLOR = {
   cat0:  "#6B7280",   // grey   — Infra (0.0)
