@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henkel — Analyse BBS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="henkel-logo.png" alt="Henkel" class="logo-img" />
+      <span class="logo-text">HSE Dept</span>
+    </div>
+    <div class="sidebar-info">
+      <div class="info-label">Système</div>
+      <div class="info-value">BBS Classifier</div>
+      <div class="info-label" style="margin-top:14px">Pipeline</div>
+      <div class="info-value">3 couches</div>
+      <div class="info-label" style="margin-top:14px">Statut</div>
+      <div class="info-value status-ok" id="status-dot">● Prêt</div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Analyse BBS — Comportements Sécurité</div>
+        <div class="topbar-sub">Classification automatique · Département HSE · Henkel Algérie</div>
+      </div>
+      <div style="text-align:right">
+        <div class="henkel-brand">Henkel</div>
+        <div class="henkel-tagline">Excellence is our Passion →</div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- ══ UPLOAD VIEW ══ -->
+      <div id="view-upload" class="view active">
+        <div class="upload-hero">
+          <div class="upload-icon">📂</div>
+          <div class="upload-title">Entrez votre fichier Excel mensuel</div>
+          <div class="upload-sub">
+            Le fichier doit contenir les colonnes <strong>Observer</strong> et <strong>Observationcomment</strong>
+          </div>
+          <button class="btn-primary" onclick="document.getElementById('file-input').click()">
+            ⬆&nbsp; Choisir un fichier .xlsx
+          </button>
+          <input type="file" id="file-input" accept=".xlsx,.xls" style="display:none" onchange="handleFile(this)" />
+          <div class="upload-hint">Formats acceptés : .xlsx · .xls</div>
+        </div>
+      </div>
+
+      <!-- ══ LOADING VIEW ══ -->
+      <div id="view-loading" class="view">
+        <div class="loading-wrap">
+          <div class="loading-icon">⚙️</div>
+          <div class="loading-title">Analyse en cours…</div>
+          <div class="loading-sub">Le pipeline traite vos observations</div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div id="steps-list"></div>
+        </div>
+      </div>
+
+      <!-- ══ RESULTS VIEW ══ -->
+      <div id="view-results" class="view">
+        <div class="results-grid">
+
+          <!-- LEFT — Leaderboard -->
+          <div class="card leaderboard-card">
+            <div class="card-head">
+              <div>
+                <span class="card-title">🏆 Classement des Observateurs</span>
+                <div class="card-sub" id="chart-month-label"></div>
+              </div>
+              <div class="head-actions">
+                <button class="btn-download" id="btn-download">⬇ Télécharger .xlsx</button>
+                <button class="btn-reset" onclick="resetView()">↩ Nouveau fichier</button>
+              </div>
+            </div>
+            <div class="lb-scroll">
+              <div id="leaderboard-table"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT — Pie chart -->
+          <div class="card pie-card">
+            <div class="card-head">
+              <span class="card-title">📊 Distribution des Catégories</span>
+              <span class="card-sub">Répartition des prédictions</span>
+            </div>
+            <div class="chart-wrap pie-wrap">
+              <canvas id="chart-pie"></canvas>
+            </div>
+            <div id="pie-legend" class="pie-legend"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
