@@ -154,6 +154,7 @@ Henkel-main/
 ├── main.py                  # FastAPI backend — all pipeline logic + API routes
 ├── BBSWA_All_Merged.xlsx    # Training data (not in repo — add locally)
 ├── requirements.txt
+├── Notebook.ipynb           # Model Logic developement and evaluation   
 ├── render.yaml              # Render.com deployment config
 └── frontend/
     ├── index.html
