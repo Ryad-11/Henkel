@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="frontend/henkel-logo.png" width="200"/>
+</p>
+
 # Henkel BBS Safety Classifier
 
 A production-grade NLP pipeline that automatically classifies French-language safety observations written by Henkel warehouse staff. Built to replace manual scoring, the system predicts a severity label for each observation and generates a monthly leaderboard of observers.
